@@ -1,0 +1,366 @@
+/*
+
+The screenplay styling CSS rules were generously provided by
+Yousefi/August. The original ScriptCSS.css file is available at:
+
+https://github.com/nyousefi/Fountain/blob/master/Fountain/ScriptCSS.css
+
+Subsequent changes made to the CSS styling rules by The Production
+Company are copyrighted (c) 2012-2015 The Production Company and also
+use the license described below.
+
+NOTE: THE LICENSE BELOW APPLIES *ONLY* TO THE CSS (IE, "STYLING") RULES
+IN THIS .HTML DOCUMENT DESCRIBING THE LAYOUT AND DISPLAY OF CONTENT
+(THAT IS, THE STUFF BETWEEN THE "style" TAGS OR IN THE .CSS FILE).
+
+----- original Yousefi/August license -----
+
+Copyright (c) 2012-2013 Nima Yousefi & John August
+
+Permission is hereby granted, free of charge, to any person obtaining a copy 
+of this software and associated documentation files (the "Software"), to 
+deal in the Software without restriction, including without limitation the 
+rights to use, copy, modify, merge, publish, distribute, sublicense, and/or 
+sell copies of the Software, and to permit persons to whom the Software is 
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in 
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+IN THE SOFTWARE.
+*/
+
+@font-face {
+	font-family: 'CourierPrime';
+	src: url('file:///android_asset/fonts/CourierPrime-Regular.otf');
+}
+
+@font-face {
+	font-family: 'CourierPrimeBold';
+	src: url('file:///android_asset/fonts/CourierPrime-Bold.otf');
+}
+
+@font-face {
+	font-family: 'CourierPrimeBoldItalic';
+	src: url('file:///android_asset/fonts/CourierPrime-BoldItalic.otf');
+}
+
+@font-face {
+	font-family: 'CourierPrimeItalic';
+	src: url('file:///android_asset/fonts/CourierPrime-Italic.otf');
+}
+
+@font-face {
+	font-family: 'CourierPrimeSans';
+	src: url('file:///android_asset/fonts/CourierPrimeSans-Regular.otf');
+}
+
+@font-face {
+	font-family: 'CourierPrimeSansBold';
+	src: url('file:///android_asset/fonts/CourierPrimeSans-Bold.otf');
+}
+
+@font-face {
+	font-family: 'CourierPrimeSansBoldItalic';
+	src: url('file:///android_asset/fonts/CourierPrimeSans-BoldItalic.otf');
+}
+
+@font-face {
+	font-family: 'CourierPrimeSansItalic';
+	src: url('file:///android_asset/fonts/CourierPrimeSans-Italic.otf');
+}
+
+@font-face {
+	font-family: 'texgyrecursor-regular';
+	src: url('file:///android_asset/fonts/texgyrecursor-regular.otf');
+}
+
+@font-face {
+	font-family: 'texgyrecursor-bold';
+	src: url('file:///android_asset/fonts/texgyrecursor-bold.otf');
+}
+
+@font-face {
+	font-family: 'texgyrecursor-italic';
+	src: url('file:///android_asset/fonts/texgyrecursor-italic.otf');
+}
+
+@font-face {
+	font-family: 'texgyrecursor-bolditalic';
+	src: url('file:///android_asset/fonts/texgyrecursor-bolditalic.otf');
+}
+
+@font-face {
+	font-family: 'gtw';
+	src: url('file:///android_asset/fonts/gtw.otf');
+}
+
+@font-face {
+	font-family: 'cfd';
+	src: url('file:///android_asset/fonts/CourierPrime-Regular.otf');
+}
+
+html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	font-size: 1.0em;
+	background-color: #121212;
+	transition: background-color 1s linear,  background-image 1s linear,  all 1s ease-out;
+	background-image: none;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+	backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+body {
+    font-family: CourierPrime,texgyrecursor-bold,Courier,monospace;
+	padding: 0;
+	margin: auto;
+	width: 100%;
+	min-width: 425px;
+	max-width: 8.5in;
+	border-left-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-top-style: none;
+	border-width: 1px;
+    border-color: black;
+    outline: solid 6px #888;
+    min-height: 100%;
+    font-size: 1pc;
+    line-height: 1pc;
+}
+
+article {
+    background-color: black;
+    transition: background-color 1s linear, color 1s linear,  all 1s ease-out;;
+}
+section {
+	padding: .5in .25in .5in .5in;
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 6.0in;
+}
+p {
+	word-wrap: break-word;
+	white-space: pre-wrap;
+
+}
+body > p:first-child {
+	margin-top: 0;
+}
+
+.scene-heading, .transition, .new-act, .end-of-act {
+	text-transform: uppercase;
+}
+
+.transition {
+	text-align: right;
+}
+
+.new-act, .end-of-act {
+	text-align: center;
+}
+
+.character {
+	margin: 1em auto 0 33%;
+	width: 180px;
+	max-width:3.75in;
+}
+
+.pagination {
+	margin: 1em auto 0 33%;
+	width: 180px;
+	max-width:3.75in;
+}
+.lyrics {
+    font-style:italic;
+	margin: 0 auto 0 17%;
+	width: 310px;
+	max-width:3.5in;
+}
+
+.dialogue {
+	margin: 0 auto 0 17%;
+	width: 310px;
+	max-width:3.5in;
+}
+
+.parenthetical {
+	margin: 0 auto 0 25%;
+	width: 250px;
+	max-width: 2.5in;
+}
+.image {
+    max-width:100%;
+    max-height:100%;
+    margin-top : 1em;
+    page-break-before : avoid;
+    page-break-after : avoid;
+}
+
+.scene-heading {
+	margin-top: 2em;
+	position: relative;
+	padding-right: 40px;
+}
+.scene-number-left {
+	float: left;
+	margin-left: -50px;
+	top: 0;
+}
+.scene-number-right {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+#script-title {
+    display: block;
+    background-color: #33691E;
+    color: #FFF;
+    border-radius: 2px;
+	padding: .5in .25in .5in .5in;
+    margin-bottom: 2.6em;
+    page-break-after: always;
+}
+#script-title .title {
+	text-align: center;
+	text-decoration: underline;
+	font-size: 1.5em;
+	line-height: 1.5em;
+}
+#script-title .credit {
+	text-align: center;
+	padding-top:1em;
+}
+#script-title .authors {
+	text-align: center;
+	padding-bottom: 1em;
+}
+#script-title .source {
+	text-align: center;
+	padding-top: 5em;
+}
+#script-title .note,
+#script-title .notes {
+	padding-top: 5em;
+	white-space: pre-line !important;
+}
+#script-title .draft-date {
+    text-align: center;
+}
+#script-title .import-date {
+    text-align: center;
+}
+#script-title .import-by {
+    text-align: center;
+}
+#script-title .copyright {
+    text-align: center;
+}
+#script-title .import-from {
+    text-align: center;
+}
+#script-title .contact {
+}
+#script-title .misc {
+    position: absolute;
+    right: 1in;
+    bottom: 0;
+}
+.section-heading {
+    position: sticky;
+    top:0;
+    line-height: 36px;
+    height: 36px;
+    color:white;
+    background-color: #33691E;
+    border-radius: 2px;
+    text-align: center;
+    margin-right: 24px;
+    z-index: 2;
+}
+.center {
+	text-align: center !important;
+}
+hr {
+    height: 0;
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+.dual-dialogue {
+	overflow: hidden;
+	margin-left: -20px;
+}
+.dual-dialogue .dual-dialogue-left,
+.dual-dialogue .dual-dialogue-right {
+	width: 50%;
+	float: left;
+}
+.dual-dialogue p {
+	width: auto;
+}
+.dual-dialogue .character {
+}
+.dual-dialogue .parenthetical {
+}
+.dual-dialogue .lyrics {
+}
+p.page-break {
+    text-align: right;
+    border-top: 1px dashed #056f00;
+    padding-top: 20px;
+    margin-top: 20px;
+    margin-left: -.5in;
+    margin-right: -.25in;
+    position: sticky;
+    z-index: 1;
+    top:-2px;
+}
+
+.page-number {
+    background: #FFFFFF;
+    margin-right: 1px;
+}
+
+div.center {
+text-align: center;
+margin: 0 auto;}
+
+div.full {
+text-align: justify }
+
+span.upper {
+text-transform: uppercase }
+
+span.italic {
+font-style: italic }
+
+span.strong {
+font-weight:900; }
+
+span.underline {
+text-decoration:underline }
+
+#wmcontainer {
+display: none;
+}
+.watermark {
+display: none;
+}
+.insert {
+background:#C5E1A5;
+}
+.remove {
+text-decoration: line-through;
+background:#EF9A9A;
+}
