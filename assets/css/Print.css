@@ -1,0 +1,379 @@
+/*
+
+The screenplay styling CSS rules were generously provided by
+Yousefi/August. The original ScriptCSS.css file is available at:
+
+https://github.com/nyousefi/Fountain/blob/master/Fountain/ScriptCSS.css
+
+Subsequent changes made to the CSS styling rules by The Production
+Company are copyrighted (c) 2012-2016 The Production Company and also
+use the license described below.
+
+NOTE: THE LICENSE BELOW APPLIES *ONLY* TO THE CSS (IE, "STYLING") RULES
+IN THIS .HTML DOCUMENT DESCRIBING THE LAYOUT AND DISPLAY OF CONTENT
+(THAT IS, THE STUFF BETWEEN THE "style" TAGS OR IN THE .CSS FILE).
+
+----- original Yousefi/August license -----
+
+Copyright (c) 2012-2013 Nima Yousefi & John August
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to
+deal in the Software without restriction, including without limitation the
+rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+sell copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.
+*/
+
+
+@font-face {
+	font-family: 'CourierPrime';
+	src: url('file:///android_asset/fonts/CourierPrime-Regular.otf');
+}
+
+@font-face {
+	font-family: 'CourierPrimeItalic';
+	src: url('file:///android_asset/fonts/CourierPrime-Italic.otf');
+}
+
+html {
+width : 8.5in;
+background : none;
+background-color : transparent;
+background-image : none;
+font-size: 12pt;
+line-height : 12pt;
+}
+section {
+width : 8.5in;
+color : #000;
+}
+article {
+width : 8.5in;
+background : none;
+background-color : transparent;
+background-image : none;
+}
+body {
+font-family: CourierPrime,texgyrecursor-bold,Courier,monospace;
+color : #000;
+font-size: 1em;
+line-height : 1em;
+padding : 0 0 0 0;
+margin : 0 0 0 0;
+}
+p {
+margin-left : 1.5in;
+width : 6in;
+overflow-wrap : break-word;
+line-height : 1em;
+white-space : pre-wrap;
+margin-top : 0;
+}
+body > p:first-child {
+margin-top : 0;
+}
+.action {
+page-break-inside : avoid;
+widows : 3;
+orphans : 3;
+margin-top : 1em;
+}
+.scene-heading {
+text-transform : uppercase;
+margin-top : 2em;
+font-weight : normal;
+position : relative;
+padding-right : 40px;
+}
+.page-break-clean + .scene-heading {
+    margin-top: 0em !important;
+}
+.transition {
+position : relative;
+text-align : right;
+width : 1.5in;
+text-transform : uppercase;
+overflow-wrap : break-word;
+margin : auto 1in auto auto;
+}
+.character {
+page-break-after : avoid;
+page-break-inside : avoid;
+margin-left : 3.5in;
+width : 3.75in;
+margin-bottom : 0;
+margin-top: 1em;
+}
+.pagination {
+page-break-after : avoid;
+page-break-inside : avoid;
+margin-left : 3.5in;
+width : 3.75in;
+margin-bottom : 0;
+margin-top : 0;
+}
+.lyrics {
+page-break-before : avoid;
+font-style : italic;
+margin-left : 2.5in;
+width : 3.75in;
+margin-top : 0;
+margin-bottom : 0;
+widows : 3;
+orphans : 3;
+}
+.dialogue {
+page-break-before : avoid;
+margin-left : 2.5in;
+margin-top : 0;
+margin-bottom : 0;
+width : 3.75in;
+widows : 3;
+orphans : 3;
+}
+.parenthetical {
+page-break-before : avoid;
+page-break-after : avoid;
+margin-left : 3.0in;
+margin-bottom : 0;
+margin-top : 0;
+width : 3.5in;
+}
+.image {
+margin-top : 1em;
+page-break-before : avoid;
+page-break-after : avoid;
+max-width:100%;
+max-height:100%;
+}
+.scene-number-left {
+float : left;
+margin-left : -50px;
+}
+.scene-number-right {
+position : absolute;
+right : 0;
+}
+#script-title {
+min-height : 7in;
+overflow : hidden;
+color : #000;
+padding-top : 20em;
+position : relative;
+}
+#script-title .title {
+text-align : center;
+text-decoration : underline;
+font-size : 1.5em;
+}
+#script-title .credit {
+text-align : center;
+padding-top : 3em;
+}
+#script-title .authors {
+text-align : center;
+padding-bottom : 1em;
+}
+#script-title .source {
+text-align : center;
+padding-bottom : 1em;
+}
+#script-title .notes {
+padding-top : 3em;
+white-space : pre-line !important ;
+}
+#script-title .draft-date {
+text-align : center;
+padding-top : 1em;
+}
+#script-title .import-date {
+text-align : center;
+padding-bottom : 7em;
+position : absolute;
+bottom : 0;
+display: none;
+}
+#script-title .import-by {
+text-align : center;
+padding-bottom : 8em;
+position : absolute;
+bottom : 0;
+display: none;
+}
+#script-title .copyright {
+text-align : center;
+padding-bottom : 11em;
+position : absolute;
+bottom : 0;
+}
+#script-title .import-from {
+display : none;
+}
+#script-title .contact {
+position : absolute;
+bottom : 0;
+}
+#script-title .misc {
+position : absolute;
+right : 1in;
+bottom : 0;
+}
+.center {
+text-align : center !important ;
+}
+hr {
+height : 0;
+border : none;
+border-bottom : 1px solid #ccc;
+}
+.dual-dialogue {
+overflow : hidden;
+margin-left : 1.5in;
+width : 6in;
+}
+.dual-dialogue .dual-dialogue-left, .dual-dialogue .dual-dialogue-right {
+margin-left : 0;
+width : 2.5in;
+float : left;
+page-break-before : avoid;
+page-break-after : avoid;
+padding-right : 1em;
+}
+.dual-dialogue p {
+width : 2.5in;
+margin-left : 0;
+}
+.dual-dialogue .character {
+page-break-before : avoid;
+page-break-after : avoid;
+padding-left : 0.5in;
+margin-left : 0;
+}
+.dual-dialogue .parenthetical {
+padding-left : 0.25in;
+page-break-before : avoid;
+page-break-after : avoid;
+margin-left : 0;
+}
+p.page-break:before {
+content : "DubScript for Android - www.dubscript.com";
+padding-right : 0.5in;
+width : 6in;
+font-size : 0.6em;
+color : #777;
+}
+p.page-break {
+text-align : right;
+padding-top : .5in;
+padding-bottom : 1em;
+page-break-before : always;
+column-span : all;
+display : block;
+}
+p.page-break-clean:before {
+content : "";
+padding-right : 0.5in;
+font-size : 0.7em;
+color : #bbb;
+}
+p.page-break-clean {
+text-align : right;
+padding-top : .5in;
+padding-bottom : 1em;
+page-break-before : always;
+column-span : all;
+}
+p.note {
+display : none;
+}
+span.italic {
+font-style : italic;
+color:  black;
+}
+#wmcontainer {
+position : fixed;
+display : flex;
+height: 100%;
+padding: 0;
+margin: 0;
+width : 8.5in;
+left: 72px;
+align-items : center;
+z-index : 2;
+opacity : 0.25;
+white-space : nowrap;
+}
+.watermark {
+color : black;
+font-size : 0px;
+transform : rotate(-45deg);
+-webkit-transform: rotate(-45deg);
+padding : 0;
+opacity : 0.25;
+z-index : 2;
+margin-top: 45%;
+white-space : nowrap;
+}
+.section-heading {
+display: none;
+}
+.insert {
+background:#C5E1A5;
+text-decoration: underline overline;
+}
+.remove {
+background:#EF9A9A;
+text-decoration: line-through;
+}
+72dpi
+@media print and (width: 8.5in) {
+p {
+color : black;
+}
+* {
+background : none;
+background-color : transparent;
+background-image : "none";
+}
+
+@page {
+size: portrait;
+margin : 0 0 0 0;
+background : none;
+background-color : transparent;
+background-image : none;
+}
+
+}
+@media screen {
+* {
+display : none;
+}
+}
+
+@media print {
+@page {
+size: portrait;
+margin : 0 0 0 0;
+background : none;
+background-color : transparent;
+background-image : none;
+color : black;
+}
+  body {
+  background: none;
+  margin : 0 0 0 0;
+  }
+}
