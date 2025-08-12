@@ -1,0 +1,189 @@
+<!-- This file is Copyright 2011-2020 The Production Company -->
+
+@font-face {
+	font-family: 'CourierPrime';
+	src: url('file:///android_asset/fonts/CourierPrime-Regular.otf');
+}
+
+@font-face {
+	font-family: 'CourierPrimeBold';
+	src: url('file:///android_asset/fonts/CourierPrime-Bold.otf');
+}
+
+@font-face {
+	font-family: 'CourierPrimeBoldItalic';
+	src: url('file:///android_asset/fonts/CourierPrime-BoldItalic.otf');
+}
+
+@font-face {
+	font-family: 'CourierPrimeItalic';
+	src: url('file:///android_asset/fonts/CourierPrime-Italic.otf');
+}
+
+@font-face {
+	font-family: 'CourierPrimeSans';
+	src: url('file:///android_asset/fonts/CourierPrimeSans-Regular.otf');
+}
+
+@font-face {
+	font-family: 'CourierPrimeSansBold';
+	src: url('file:///android_asset/fonts/CourierPrimeSans-Bold.otf');
+}
+
+@font-face {
+	font-family: 'CourierPrimeSansBoldItalic';
+	src: url('file:///android_asset/fonts/CourierPrimeSans-BoldItalic.otf');
+}
+
+@font-face {
+	font-family: 'CourierPrimeSansItalic';
+	src: url('file:///android_asset/fonts/CourierPrimeSans-Italic.otf');
+}
+
+@font-face {
+	font-family: 'texgyrecursor-regular';
+	src: url('file:///android_asset/fonts/texgyrecursor-regular.otf');
+}
+
+@font-face {
+	font-family: 'texgyrecursor-bold';
+	src: url('file:///android_asset/fonts/texgyrecursor-bold.otf');
+}
+
+@font-face {
+	font-family: 'texgyrecursor-italic';
+	src: url('file:///android_asset/fonts/texgyrecursor-italic.otf');
+}
+
+@font-face {
+	font-family: 'texgyrecursor-bolditalic';
+	src: url('file:///android_asset/fonts/texgyrecursor-bolditalic.otf');
+}
+
+@font-face {
+	font-family: 'gtw';
+	src: url('file:///android_asset/fonts/gtw.otf');
+}
+
+@font-face {
+	font-family: 'cfd';
+	src: url('file:///mnt/sdcard/Courier\ Final\ Draft.TTF');
+}
+
+html {
+	margin: auto;
+	padding: 0;
+	height: auto;
+	width: 100%;
+	font-size: 1.0em;
+	background-color: #878785;
+	background-image: none;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+body {
+    font-family: CourierPrime,texgyrecursor-bold,Courier,monospace;
+	padding: 0;
+	margin: auto;
+	width: 100%;
+	min-width: 425px;
+	max-width: 6.75in;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-top-style: none;
+    border-width: 1px;
+    border-color: black;
+    outline: solid 6px #888;
+    min-height: 100%;
+    font-size: 1pc;
+    line-height: 1pc;
+}
+
+p.sceneheading {
+	text-transform: uppercase;
+	margin-top: 2em;
+	font-weight: 700;
+	position: relative;
+	padding-right: 40px;
+}
+
+p.action {
+	/* background-color: rgba(128, 128, 128, 0.01); */
+}
+
+p.character {
+	margin: 1em auto 0 33%;
+	width: 180px;
+	text-transform: uppercase;
+}
+
+p.parenthetical {
+	margin: 0 auto 0 25%;
+	width: 250px;
+}
+
+p.dialog {
+	margin: 0 auto 0 17%;
+	width: 310px;
+}
+
+p.dualcharacter {
+	margin-left: 100px;
+	text-transform: uppercase
+}
+
+p.dualparenthetical {
+	margin-left: 80px;
+	margin-right: 80px
+}
+
+p.dualdialogue {
+	margin-left: 60px;
+	margin-right: 80px
+}
+
+p.transition {
+	text-align: right;
+	text-transform: uppercase
+}
+
+p.titlepage {
+	text-align: center;
+    display: block;
+    background-color: rgba(15, 111, 0, .8);
+    color: #FFF;
+    border-radius: 2px;
+	padding: .5in .25in .5in .5in;
+    margin-bottom: 2.6em;
+    page-break-after: always;
+}
+
+p.note {
+	margin-left: 60px;
+	background-color: pink;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #000000;
+}
+
+span.center {
+	text-align: center
+}
+
+span.full {
+	text-align: justify
+}
+
+span.upper {
+	text-transform: uppercase
+}
+
+span.italic {
+	font-style: italic;
+	font-family: 'Courier Final Draft', 'texgyrecurser-bolditalic'
+}
+
+span.underline {
+	text-decoration: underline
+}
