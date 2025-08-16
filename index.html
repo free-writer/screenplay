@@ -1,66 +1,243 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Dubscript → Web (Converted)</title>
-<link rel="stylesheet" href="assets/ScriptCSS.css">
-<link rel="stylesheet" href="assets/Print.css">
-<style>
-body { margin:0; background:#08101a; color:#fff; font-family: Arial, sans-serif; }
-.header { padding:12px; display:flex; gap:8px; align-items:center; background:#06101a; }
-.container { display:grid; grid-template-columns:1fr 1fr; gap:12px; padding:12px; height:calc(100vh - 56px); }
-.card { background:#0b1220; border-radius:8px; padding:12px; box-shadow:0 6px 20px rgba(0,0,0,0.6); display:flex; flex-direction:column; }
-textarea { flex:1; width:100%; resize:none; background:transparent; color:#cfe6ff; border:1px solid rgba(255,255,255,0.03); padding:12px; font-family: monospace; font-size:15px; }
-.previewPaper { background:#fff; color:#111; padding:28px; border-radius:6px; max-width:780px; margin:12px auto; font-family: 'Courier Prime', monospace; }
-.controls { display:flex; gap:8px; align-items:center; margin-top:8px; }
-button { background:#123; color:#fff; border:none; padding:8px 10px; border-radius:6px; cursor:pointer; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Screenplay Card View</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fafafa;
+      color: #000;
+      margin: 0;
+      padding: 0;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark-mode {
+      background: #121212;
+      color: #f0f0f0;
+    }
+
+    #cards-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 1200px;
+      margin: 60px auto;
+      gap: 20px;
+      padding: 16px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      width: 100%;
+      min-height: 300px;
+      position: relative; /* For buttons inside */
+    }
+    body.dark-mode .card {
+      background: #1e1e1e;
+      border-color: #555;
+      box-shadow: 0 2px 5px rgba(255,255,255,0.05);
+    }
+
+    .scene-heading,
+    .description {
+      border: none;
+      outline: none;
+      background: transparent;
+      color: inherit;
+      resize: none;
+      width: 100%;
+    }
+    .scene-heading {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .description {
+      font-size: 1rem;
+      flex-grow: 1;
+    }
+
+    .top-controls {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 10px;
+      z-index: 20;
+    }
+    .bottom-controls {
+      position: fixed;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    button {
+      font-size: 1.3rem;
+      padding: 8px 12px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    body.dark-mode button {
+      background-color: #0056b3;
+    }
+    body.dark-mode button:hover {
+      background-color: #007bff;
+    }
+
+    /* Card-specific buttons (add and fullscreen) */
+    .card-buttons {
+      display: none; /* Hidden on desktop */
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+
+    /* 📱 Mobile: Vertical full-screen cards */
+    @media (max-width: 600px) {
+      #cards-container {
+        gap: 0;
+        padding: 0;
+        margin: 0;
+      }
+      .card {
+        width: 100vw;
+        height: 100vh;   /* Full vertical screen fill per card */
+        border-radius: 0;
+        box-shadow: none;
+        margin: 0;
+        padding: 16px;
+      }
+      h1 {
+        display: none; /* Hide header on mobile */
+      }
+      .bottom-controls {
+        display: none; /* Hide fixed bottom on mobile */
+      }
+      .card-buttons {
+        display: flex; /* Show buttons at bottom of each card */
+      }
+      html, body {
+        overflow-y: scroll; /* Smooth vertical scrolling */
+      }
+    }
+
+    /* 🖨 Print styles */
+    @media print {
+      body { background: #fff; color: #000; }
+      #cards-container { flex-direction: row; flex-wrap: wrap; }
+      .card {
+        width: 45%;
+        min-height: auto;
+        margin: 10px;
+        border: none;
+        box-shadow: none;
+        background: white;
+      }
+      .scene-heading { text-transform: uppercase; }
+      .top-controls, .bottom-controls, h1, .card-buttons { display: none; }
+    }
+  </style>
 </head>
 <body>
-<div class="header"><strong>Dubscript → Web (converted)</strong><div style="flex:1"></div><button id="downloadBtn">Download .fountain</button></div>
-<div class="container">
-  <div class="card">
-    <div style="font-size:13px;color:#9aa6b2;margin-bottom:8px">Editor (type Fountain)</div>
-    <textarea id="editor" placeholder="Type Fountain script here..."></textarea>
-    <div class="controls"><div id="chars" style="color:#9aa6b2">0 chars</div></div>
+  <h1>Screenplay Card View</h1>
+
+  <div class="top-controls">
+    <button id="toggleDarkModeBtn">🌙</button>
+    <button id="printPreviewBtn">P</button>
   </div>
-  <div class="card">
-    <div style="font-size:13px;color:#9aa6b2;margin-bottom:8px">Preview</div>
-    <div id="previewWrap" style="overflow:auto;flex:1;padding:12px"><div id="preview" class="previewPaper">Live preview will appear here</div></div>
+
+  <div id="cards-container"></div>
+
+  <div class="bottom-controls">
+    <button id="addCardBtn">+</button>
   </div>
-</div>
-<script>
-// Embedded fountain parser (minified)
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.Fountain=void 0;const lexer_1=require("./lexer"),utilities_1=require("./utilities");class Fountain{parse(e,t){if(null==e)throw new Error("Script is undefined or null.");if("string"!=typeof e)throw new Error(`Script should be \`string\`, input was \`${Object.prototype.toString.call(e)}\`.`);try{let r="";const[s,a]=lexer_1.Lexer.tokenize(e);this.tokens=s.concat(a);const n=s.find((e=>"title"===e.type));return(null==n?void 0:n.text)&&(r=(0,utilities_1.unEscapeHTML)(lexer_1.InlineLexer.reconstruct(n.text).replace("<br />"," ").replace(/<(?:.|\n)*?>/g,""))),{title:r,html:{title_page:s.map((e=>this.to_html(e))).join(""),script:a.map((e=>this.to_html(e))).join("")},tokens:t?this.tokens:[]}}catch(e){throw e.message+="\nPlease submit an issue to https://github.com/jonnygreenwald/fountain-js/issues",e}}to_html(e){let t="";switch((null==e?void 0:e.text)&&(t=lexer_1.InlineLexer.reconstruct(e.text,"action"===e.type)),e.type){case"title":return`<h1>${t}</h1>`;case"author":case"authors":return`<p class="authors">${t}</p>`;case"contact":case"copyright":case"credit":case"date":case"draft_date":case"notes":case"revision":case"source":return`<p class="${e.type.replace(/_/g,"-")}">${t}</p>`;case"scene_heading":return`<h3${(e.scene_number?` id="${e.scene_number}">`:">")+t}</h3>`;case"transition":return`<h2>${t}</h2>`;case"dual_dialogue_begin":return'<div class="dual-dialogue">';case"dialogue_begin":return`<div class="dialogue${e.dual?" "+e.dual:""}">`;case"character":return`<h4>${t}</h4>`;case"parenthetical":return`<p class="parenthetical">${t}</p>`;case"dialogue":case"action":return`<p>${t}</p>`;case"dialogue_end":case"dual_dialogue_end":return"</div>";case"section":case"synopsis":case"spaces":return;case"note":return`\x3c!-- ${t} --\x3e`;case"boneyard_begin":return"\x3c!-- ";case"boneyard_end":return" --\x3e";case"centered":return`<p class="centered">${t}</p>`;case"lyrics":return`<p class="lyrics">${t}</p>`;case"page_break":return"<hr />"}}}exports.Fountain=Fountain;
 
-// expose parser as Fountain constructor (module-style code above used exports.Fountain)
-var Fountain = (exports && exports.Fountain) ? exports.Fountain : (typeof Fountain !== 'undefined' ? Fountain : null);
+  <script>
+    const cardsContainer = document.getElementById("cards-container");
+    const addCardBtn = document.getElementById("addCardBtn");
+    const printPreviewBtn = document.getElementById("printPreviewBtn");
+    const toggleDarkModeBtn = document.getElementById("toggleDarkModeBtn");
 
-function parseAndRender(text) {
-  try {
-    var p = new Fountain();
-    var out = p.parse(text || '');
-    var html = out && out.html && out.html.script ? out.html.script : '';
-    return '<div class="script">' + html + '</div>';
-  } catch (e) {
-    return '<pre style="color:#a00">Parse error: ' + (e.message||e) + '</pre>';
-  }
-}
+    let isDarkMode = false;
 
-var editor = document.getElementById('editor');
-var preview = document.getElementById('preview');
-var chars = document.getElementById('chars');
-function update() {
-  var val = editor.value || '';
-  chars.textContent = val.length + ' chars';
-  preview.innerHTML = parseAndRender(val);
-}
-editor.addEventListener('input', function(){ update(); localStorage.setItem('dubscript:doc', editor.value); });
-document.getElementById('downloadBtn').addEventListener('click', function(){ var b=new Blob([editor.value||''],{type:'text/plain'}); var a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download='script.fountain'; a.click(); URL.revokeObjectURL(a.href); });
-// load saved doc
-var saved = localStorage.getItem('dubscript:doc'); if (saved) editor.value = saved; else editor.value = 'INT. HOUSE - DAY\n\nCHARACTER\n  Dialogue...';
-update();
-</script>
+    function createCard() {
+      // Lock previous cards
+      document.querySelectorAll(".card textarea").forEach(el => el.disabled = true);
+
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      const sceneHeading = document.createElement("textarea");
+      sceneHeading.classList.add("scene-heading");
+      sceneHeading.placeholder = "Scene Heading (e.g., INT. HOUSE - DAY)";
+
+      const description = document.createElement("textarea");
+      description.classList.add("description");
+      description.placeholder = "Description / Action Lines";
+
+      // Add card-specific buttons for mobile
+      const cardButtons = document.createElement("div");
+      cardButtons.classList.add("card-buttons");
+
+      const addBtn = document.createElement("button");
+      addBtn.textContent = "+";
+      addBtn.addEventListener("click", createCard);
+
+      const fullscreenBtn = document.createElement("button");
+      fullscreenBtn.textContent = "[]";
+      fullscreenBtn.addEventListener("click", () => {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen();
+        } else {
+          document.exitFullscreen();
+        }
+      });
+
+      cardButtons.appendChild(addBtn);
+      cardButtons.appendChild(fullscreenBtn);
+
+      card.appendChild(sceneHeading);
+      card.appendChild(description);
+      card.appendChild(cardButtons);
+      cardsContainer.appendChild(card);
+
+      card.scrollIntoView({ behavior: "smooth" });
+      sceneHeading.focus();
+    }
+
+    addCardBtn.addEventListener("click", createCard);
+    printPreviewBtn.addEventListener("click", () => window.print());
+    toggleDarkModeBtn.addEventListener("click", () => {
+      isDarkMode = !isDarkMode;
+      document.body.classList.toggle("dark-mode", isDarkMode);
+      toggleDarkModeBtn.textContent = isDarkMode ? "☀️" : "🌙";
+    });
+
+    // Create one card on load
+    createCard();
+  </script>
 </body>
 </html>
